@@ -1,0 +1,54 @@
+CREATE TABLE Unit
+(
+ Unit_ID VARCHAR(6) NOT NULL,
+ Unit_Level TINYINT,
+ Unit_Name VARCHAR(255),
+ Unit_Duration REAL,
+ Unit_Numbers SMALLINT,
+ Unit_Priority TINYINT,
+ PRIMARY KEY (Unit_ID)
+);
+
+CREATE TABLE Unit_Location
+(
+ Unit_ID VARCHAR(6) NOT NULL,
+ Unit_LocID VARCHAR(10) NOT NULL, 
+ Unit_Location SMALLINT,
+ Unit_Numbers TINYINT,
+ FOREIGN KEY (Unit_ID) REFERENCES Unit(Unit_ID)
+);
+
+CREATE TABLE Location
+(
+ Loc_ID VARCHAR(4) NOT NULL,
+ Loc_Name VARCHAR(255),
+ PRIMARY KEY (Loc_ID)
+);
+
+CREATE TABLE Venue
+(
+ Ven_ID TINYINT NOT NULL,
+ Loc_ID VARCHAR(4),
+ Ven_Capacity SMALLINT,
+ PRIMARY KEY (Ven_ID),
+ FOREIGN KEY (Loc_ID) REFERENCES Location (Loc_ID)
+ );
+
+CREATE TABLE Session_Time_Frame
+(
+ Sess_ID TINYINT NOT NULL,
+ Sess_Day TINYINT NOT NULL,
+ Sess_Venue TINYINT NOT NULL,
+ Sess_P1 VARCHAR(255),
+ Sess_P2 VARCHAR(255),
+ Sess_P3 VARCHAR(255),
+ PRIMARY KEY (Sess_ID)
+);
+
+CREATE TABLE Students
+(
+ Stud_ID SMALLINT NOT NULL UNIQUE,
+ Stud_Unit_ID VARCHAR(6),
+ Stud_Number VARCHAR(255),
+ PRIMARY KEY (Stud_ID)
+);
