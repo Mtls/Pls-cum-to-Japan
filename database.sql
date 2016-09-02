@@ -32,7 +32,7 @@ CREATE TABLE Venue
  Ven_Capacity SMALLINT,
  PRIMARY KEY (Ven_ID),
  FOREIGN KEY (Loc_ID) REFERENCES Location (Loc_ID)
- );
+);
 
 CREATE TABLE Session_Time_Frame
 (
